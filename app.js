@@ -59,14 +59,13 @@ app.use(function(err, req, res, next) {
 
 var connection = require('./server.js');
 
-connection.query('SELECT name from test', function(err, rows, fields) {
-  if (!err)
-    console.log('The solution is: ', rows);
-  else
-    console.log('Error while performing Query.');
-});
-
-connection.end();
-
+var getUserName = function() {
+    var sql = 'select name form test';
+    var username = connection.executeQuery(sql);
+    console.log("Return from connection = "  + username);
+    return username;
+}
+var name = getUserName();
+console.log(name);
 
 module.exports = app;
