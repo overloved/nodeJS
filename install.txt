@@ -1,0 +1,15 @@
+install express globally
+	- sudo npm install -g express
+
+install express hogan
+	- express app_name --hogan -c [stylus, less]
+	- cd app_name
+	- npm install
+
+run app 
+	- /bin/www app.js
+
+
+install nodemon
+	- sudo npm install nodemon
+	- nodemon app.js

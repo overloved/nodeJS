@@ -1,0 +1,14 @@
+{
+	"dev": {
+		"host": "localhost",
+		"user": "root",
+		"password": "root",
+		"database": "future"
+	},
+
+	"production": {
+		"host": "localhost",
+		"user": "root",
+		"database": "future"
+	}
+}
