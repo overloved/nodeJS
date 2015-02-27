@@ -57,15 +57,4 @@ app.use(function(err, req, res, next) {
     });
 });
 
-var connection = require('./server.js');
-
-var getUserName = function() {
-    var sql = 'select name form test';
-    var username = connection.executeQuery(sql);
-    console.log("Return from connection = "  + username);
-    return username;
-}
-var name = getUserName();
-console.log(name);
-
 module.exports = app;
