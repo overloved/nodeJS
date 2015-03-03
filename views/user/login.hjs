@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-<!--     <title>{{ title }}</title> -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-<!--     <h1>{{ title }}</h1> -->
-    <h2>Hello, {{ name }}</h2>
-<!--     <p>Welcome to {{ title }}</p> -->
-
 	<div class="signup">
 		<form class="form" method="POST" action="/user">
 			<h2>Create Registration Form Using jQuery</h2>
