@@ -1,0 +1,29 @@
+<!-- views/user/login.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../html/head %>
+</head>
+<body>
+	<header>
+		<% include ../html/header %>
+	</header>
+
+	<div class="content">
+		<div class="signup">
+			<form class="form" method="POST" action="/user">
+				<h2>Create Login Form Using jQuery</h2>
+				<label>Email:</label>
+				<input type="email" name="email" id="email">
+				<label>Password:</label>
+				<input type="password" name="password" id="password">
+				<input type="button" name="register" id="register" value="Submit">
+			</form>
+		</div>
+	</div>
+
+	<footer>
+		<% include ../html/footer %>
+	</footer>
+</body>

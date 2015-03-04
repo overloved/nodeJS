@@ -1,0 +1,39 @@
+<!-- views/user/register.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../html/head %>
+</head>
+<body>
+	<header>
+		<% include ../html/header %>
+	</header>
+
+	<div class="content">
+		<div class="register">
+			<form class="form" method="POST" action="/createPost">
+				<h2>Create Registration Form Using jQuery</h2>
+				<label>First Name:</label>
+				<input type="text" name="fname" id="fname">
+				<label>Last Name:</label>
+				<input type="text" name="lname" id="lname">
+				<label>Email:</label>
+				<input type="email" name="email" id="email">
+				<label>Password:</label>
+				<input type="password" name="password" id="password">
+				<label>Confirm Password:</label>
+				<input type="password" name="cpassword" id="cpassword">
+				<button type="submit" id="register">Register</button>
+			</form>
+		</div>
+	</div>
+
+	<footer>
+		<% include ../html/footer %>
+	</footer>
+</body>
+
+<script type="text/javascript">
+	console.log("in register page");
+</script>

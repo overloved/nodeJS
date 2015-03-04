@@ -7,7 +7,7 @@ var password = config.password ? config.password : null;
 
 var mysql = require('mysql');
 
-exports.executeQuery = function(query, callback) {
+exports.dbConnect = function(query) {
 	var connection = mysql.createConnection({
 	  	host     : config.host,
 	  	user     : config.user,
@@ -15,12 +15,12 @@ exports.executeQuery = function(query, callback) {
 	  	database : config.database
 	});
 	connection.connect();
-
-	connection.query(query, function(err, rows, fields) {
-	  	if (err) throw err;
-        connection.end();
-        console.log("Here in server.js: " + rows[0].name);
-        callback(rows[0].name);	    
-	});
+	// callback(connect);
+	// connection.query(query, function(err, rows, fields) {
+	//   	if (err) throw err;
+ //        connection.end();
+ //        console.log("Here in server.js: " + rows[0]);
+ //        callback(rows[0]);	    
+	// });
 }
 
