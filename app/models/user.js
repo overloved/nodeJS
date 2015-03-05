@@ -1,12 +1,4 @@
-var connection = require('../resources/server.js');
-
-var env = "dev";
-var config = require('../resources/config.json')[env];
-var password = config.password ? config.password : null;
-
-var mysql = require('mysql');
-
-// connection.dbConnect();
+var db = require('../resources/server.js');
 
 function User(user) {
 	this.fname = user.fname;
@@ -33,21 +25,18 @@ User.prototype.save = function(callback) {
 		password: this.password
 	};
 
-	var connection = mysql.createConnection({
-	  	host     : config.host,
-	  	user     : config.user,
-	  	password : config.password,
-	  	database : config.database
-	});
+	var connection = db.dbConnect();
+
 	connection.connect();
 
 	var sql = 'INSERT INTO user_entity(fname, lname, email, password) VALUES("' + user.fname + '", "' + user.lname + '", "' + user.email + '", "' + user.password + '")';
 	connection.query(sql, function(err, res) {
 		if (err) {
 			console.log("ERROR: " + err);
-			throw err;
+			//throw err;
+			callback(err, null);
 		}
-		callback(user.fname);
+		callback(null, user.fname);
 	});
 
 	connection.end();

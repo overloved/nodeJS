@@ -23,7 +23,7 @@ exports.createPost = function(req, res) {
 
 	if (cpassword != password) {
 		req.flash('error', 'password is not the same');
-		return res.redirect('/create');
+		return res.redirect('/register');
 	}
 
 	var md5 = crypto.createHash('md5');
@@ -36,11 +36,12 @@ exports.createPost = function(req, res) {
       	password: password
   	});
 
-  	newUser.save(function(err) {
+  	newUser.save(function(err, fname) {
+  		console.log(fname);
   		if (err) {
   			//req.flash('error', err);
   			console.log("failed");
-  			return res.redirect('/create');
+  			return res.redirect('/register');
   		}
   		//req.flash('success', 'success!');
   		console.log("success");

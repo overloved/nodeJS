@@ -7,20 +7,13 @@ var password = config.password ? config.password : null;
 
 var mysql = require('mysql');
 
-exports.dbConnect = function(query) {
+exports.dbConnect = function() {
 	var connection = mysql.createConnection({
 	  	host     : config.host,
 	  	user     : config.user,
 	  	password : config.password,
 	  	database : config.database
 	});
-	connection.connect();
-	// callback(connect);
-	// connection.query(query, function(err, rows, fields) {
-	//   	if (err) throw err;
- //        connection.end();
- //        console.log("Here in server.js: " + rows[0]);
- //        callback(rows[0]);	    
-	// });
+	return connection;
 }
 
