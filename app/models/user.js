@@ -1,4 +1,5 @@
 var db = require('../resources/server.js');
+var connection = db.dbConnect();
 
 function User(user) {
 	this.fname = user.fname;
@@ -25,10 +26,6 @@ User.prototype.save = function(callback) {
 		password: this.password
 	};
 
-	var connection = db.dbConnect();
-
-	connection.connect();
-
 	var sql = 'INSERT INTO user_entity(fname, lname, email, password) VALUES("' + user.fname + '", "' + user.lname + '", "' + user.email + '", "' + user.password + '")';
 	connection.query(sql, function(err, res) {
 		if (err) {
@@ -41,3 +38,22 @@ User.prototype.save = function(callback) {
 
 	connection.end();
 }
+
+User.prototype.checkUserExist = function(email, callback) {
+	connection.connect();
+
+	var sql = 'SELECT COUNT(email) FROM user_entity WHERE email = "' + email + '"';
+	connection.query(sql, function(err, user){
+		if (err) {
+			console.log("log err");
+			callback(err, null);
+		}
+		callback(null, user);
+	});
+} 
+
+
+
+
+
+

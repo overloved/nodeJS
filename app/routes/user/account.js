@@ -23,6 +23,7 @@ exports.createPost = function(req, res) {
 
 	if (cpassword != password) {
 		req.flash('error', 'password is not the same');
+		console.log('error', 'password is not the same');
 		return res.redirect('/register');
 	}
 
@@ -36,16 +37,27 @@ exports.createPost = function(req, res) {
       	password: password
   	});
 
-  	newUser.save(function(err, fname) {
-  		console.log(fname);
-  		if (err) {
-  			//req.flash('error', err);
-  			console.log("failed");
-  			return res.redirect('/register');
-  		}
-  		//req.flash('success', 'success!');
-  		console.log("success");
-  		res.redirect('/');
-  	});
+	newUser.checkUserExist(newUser.email, function(err, user) {
+		if (err) {
+			req.flash('error', err);
+			return res.redirect('/');
+		}
+		console.log(user);
+		if (user >= 1) {
+			req.flash('error', 'User already exists!');
+      		return res.redirect('/register');
+		}
+		newUser.save(function(err, fname) {
+	  		console.log(fname);
+	  		if (err) {
+	  			//req.flash('error', err);
+	  			console.log("failed to register");
+	  			return res.redirect('/register');
+	  		}
+	  		//req.flash('success', 'success!');
+	  		console.log("success");
+	  		res.redirect('/');
+	  	});
+	}); 	
 }
 
